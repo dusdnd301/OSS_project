@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>장비 대여</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+      background-color: #f8f8f8;
+    }
+    form, #rentalList {
+      background: #fff;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      max-width: 500px;
+    }
+    input, button {
+      display: block;
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<h1>장비 대여 신청</h1>
+
+<form id="rentalForm">
+  <input type="text" id="equipmentName" placeholder="장비 이름" required />
+  <input type="text" id="renterName" placeholder="대여자 이름" required />
+  <input type="date" id="rentDate" required />
+  <input type="date" id="returnDate" required />
+  <button type="submit">대여하기</button>
+</form>
+
+<h2>전체 대여 목록</h2>
+<div id="rentalList">불러오는 중...</div>
+
+<script>
+  // 대여 등록
+  document.getElementById("rentalForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const data = {
+      equipmentName: document.getElementById("equipmentName").value,
+      renterName: document.getElementById("renterName").value,
+      rentDate: document.getElementById("rentDate").value,
+      returnDate: document.getElementById("returnDate").value
+    };
+
+    await fetch("/api/rental/rent", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+
+    alert("장비가 대여되었습니다.");
+    document.getElementById("rentalForm").reset();
+    loadRentals();
+  });
+
+  // 대여 목록 불러오기
+  async function loadRentals() {
+    const res = await fetch("/api/rental/all");
+    const data = await res.json();
+
+    const list = document.getElementById("rentalList");
+    if (data.length === 0) {
+      list.innerText = "등록된 대여 내역이 없습니다.";
+    } else {
+      list.innerHTML = data.map(r => `
+        <div style="margin-bottom: 1rem;">
+          <strong>${r.equipmentName}</strong><br/>
+          대여자: ${r.renterName}<br/>
+          기간: ${r.rentDate} ~ ${r.returnDate}
+        </div>
+      `).join("");
+    }
+  }
+
+  loadRentals();
+</script>
+
+</body>
+</html>
