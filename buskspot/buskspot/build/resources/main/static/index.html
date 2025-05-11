@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>Busk Spot - 홈</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff8f0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    img {
+      width: 200px;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: #333;
+    }
+    .button-container {
+      display: flex;
+      gap: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #5e4ae3;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #4a39c0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- 로고 이미지 삽입 -->
+<img src="/logo.png" alt="BuskSpot Logo" />
+
+<h1>Welcome to Busk Spot</h1>
+
+<div class="button-container">
+  <button onclick="location.href='/login.html'">로그인</button>
+  <button onclick="location.href='/register.html'">회원가입</button>
+</div>
+
+</body>
+</html>
