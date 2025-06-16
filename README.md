@@ -1,4 +1,4 @@
-# OSS_project
+# OSS_Project
 1. 실행환경 
 
 Java 설치
@@ -81,6 +81,11 @@ tasks.named('test') {
 8) java -jar buskspot-0.0.1-SNAPSHOT.jar 명령어 입력해 애플리케이션을 시작한다
 9) 브라우저를 열고 http://localhost:8080 으로 접속하면 애플리케이션을 이용할 수 있다
 
+JAR 파일이 실행되지 않음: JDK 21이 올바르게 설치되었는지 확인하고, 환경 변수 JAVA_HOME이 올바르게 설정되었는지 확인
+시스템 환경 변수 편집 -> 환경 변수 -> 시스템 변수 -> JAVA_HOME이 있는지 확인 ->없으면 새로 만들기 경로에는 C:\Program Files\Java\jdk-21
+시스템 환경 변수 편집 -> 환경 변수 -> 사용자 변수 -> Path를 선택한 후 편집 -> %JAVA_HOME%\bin 추가
+베이스 연결 오류: application.properties 파일의 데이터베이스 설정이 올바른지 확인
+
 2-2
 
 1) 소스코드 zip 파일을 다운로드 받아서 Powershell을 관리자 권한으로 실행, zip 파일이 있는 디렉토리로 이동한다
@@ -145,4 +150,3 @@ Forwarding 에 있는 URL ex ) https://dd43-118-41-8-163.ngrok-free.app 에 다�
 - 규칙 / 공연 저장 : 규칙 및 공연 내용등을 정리해서 텍스트로 작성한 후 규칙 및 공연 저장을 누르면 일반 사용자가 규칙 / 공연 보기 페이지에서 최신화된 내용들을 확인 할 수 있다.
 
 - 로그아웃 : 로그아웃을 해서 로그인 / 회원가입 페이지로 넘어간다
-
